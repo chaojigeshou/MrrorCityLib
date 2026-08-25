@@ -1,3 +1,0 @@
-# 统一 LF: CI (ubuntu) 上 luau/node 直接读文件, CRLF 会破坏字节级工具
-* text=auto eol=lf
-*.ps1 text eol=crlf

@@ -22,7 +22,7 @@
 | 🔔 通知 | 右上堆叠、**类型化（success/error/warning/info 配色）**、标题/内容/时长、点击关闭 |
 | ♻️ 生命周期 | `Unload()` 全断开全销毁、`OnUnload` 钩子、**防重复注入**（重载自动回收旧实例与旧监听） |
 
-> 完整规格与状态表见 [FEATURE_SPEC.md](FEATURE_SPEC.md)；API 参考见 [Docs.md](Docs.md)。
+> API 参考见 [Docs.md](Docs.md)。
 ## 快速开始
 
 ```lua
@@ -56,13 +56,10 @@ local Multi = Group:AddDropdown({ Name = "品质多选", Multi = true,
 
 ```
 MrrorCityLib/
-├── source.lua              ← 库本体（单文件 4200+ 行，内部按模块分区）
-├── Example.lua             ← 全控件使用示例（可直接粘贴运行）
-├── README.md / Docs.md / SPEC.md
-├── typings/MrrorCityLib.emmy.lua   ← EmmyLua 类型注解（VSCode 补全/检查）
-├── tests/                  ← stub 环境冒烟测试（stub + exercise + build.js）
-├── tools/check.ps1         ← 本地一键校验（下载官方 Luau CLI + 编译 + 冒烟）
-└── .github/workflows/ci.yml ← push/PR 自动 CI
+├── source.lua    ← 库本体（单文件，内部按模块分区）
+├── README.md     ← 本文件（特性/快速开始/设计说明）
+├── Docs.md       ← 完整 API 参考
+└── Example.lua   ← 全控件使用示例（可直接粘贴运行）
 ```
 
 ## 设计说明（写给二次开发）

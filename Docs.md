@@ -327,32 +327,7 @@ Library:LoadConfig()               -- 旧档自动按序迁移到当前 Library.
 - 迁移成功链完成后 `_ConfigVersion` 写回配置，下次 SaveConfig 落盘。
 - 当前格式版本: `Library.ConfigVersion`（默认 `"1"`）。库升级改结构时先 bump 它再注册迁移，不要改旧档语义。
 
-## 8. 类型提示 (EmmyLua)
-
-`typings/MrrorCityLib.emmy.lua` 包含全部公开 API 的 `---@class`/`---@field` 注解（v0.8 全量：Lite10 与配置迁移均已收录）。
-在 VSCode + [EmmyLua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) 插件下：
-把仓库根目录加入工作区，然后在 Example 里：
-
-```lua
----@type Library
-local Library = loadstring(game:HttpGet("...", true))()
-```
-
-即可获得补全与错误检查。
-
-## 9. 测试 / CI (v0.6)
-
-```pwsh
-# 本地: 语法编译检查 + 冒烟测试 (自动下载官方 Luau 二进制, 仅首次)
-powershell -ExecutionPolicy Bypass -File tools\check.ps1
-```
-
-- `tests/stub.lua` — Roblox 全局/Instance 模拟器
-- `tests/exercise.lua` — 全 API 冒烟用例(期望输出 `SMOKE_DONE`)
-- `tests/build.js` — 拼装 stub + source + exercise
-- `.github/workflows/ci.yml` — push/PR 自动跑 编译检查 + 冒烟
-
-## 10. 常见问题
+## 8. 常见问题
 
 **Q: 重复执行脚本出现两套 UI/两个热键？**
 A: 不会。v0.2 用 `_G.__MrrorCityLib` 桥接，重载即完整回收上一套。
