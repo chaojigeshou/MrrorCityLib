@@ -26,7 +26,7 @@
 ## 快速开始
 
 ```lua
-local Library = loadstring(game:HttpGet("https://你的仓库/MrrorCityLib/source.lua", true))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/chaojigeshou/MrrorCityLib/main/source.lua", true))()
 
 local Window = Library:CreateWindow({
     Title = "MrrorCityLib",

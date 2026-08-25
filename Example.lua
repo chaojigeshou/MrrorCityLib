@@ -7,7 +7,7 @@
 -- 0) 加载失败友好提示 (可选, 推荐)
 local Library = (function()
 	local ok, res = pcall(function()
-		return loadstring(game:HttpGet("https://你要发布的位置/MrrorCityLib/source.lua", true))()
+		return loadstring(game:HttpGet("https://raw.githubusercontent.com/chaojigeshou/MrrorCityLib/main/source.lua", true))()
 	end)
 	if not ok then
 		warn("MrrorCityLib 加载失败: " .. tostring(res))
