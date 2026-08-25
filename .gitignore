@@ -1,0 +1,12 @@
+# 测试构建产物 (由 tests/build.js 生成, 提交后自动重建)
+tests/combined.lua
+
+# 本地临时文件
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

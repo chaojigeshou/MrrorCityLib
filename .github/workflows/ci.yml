@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download Luau CLI
+        run: |
+          curl -sL https://api.github.com/repos/luau-lang/luau/releases/latest \
+            | grep -oP '"browser_download_url":\s*"\K[^"]*linux[^"]*' \
+            | head -n 1 | xargs curl -sL -o luau.zip
+          unzip -o luau.zip -d luau
+          chmod +x luau/luau luau/luau-compile
+          echo "$PWD/luau" >> "$GITHUB_PATH"
+
+      - name: Syntax check source.lua
+        run: luau-compile source.lua > /dev/null
+
+      - name: Syntax check Example.lua
+        run: luau-compile Example.lua > /dev/null
+
+      - name: Smoke test (stubbed runtime)
+        run: |
+          node tests/build.js
+          luau tests/combined.lua
