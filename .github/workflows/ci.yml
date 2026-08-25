@@ -17,9 +17,10 @@ jobs:
 
       - name: Download Luau CLI
         run: |
-          curl -sL https://api.github.com/repos/luau-lang/luau/releases/latest \
-            | grep -oP '"browser_download_url":\s*"\K[^"]*linux[^"]*' \
-            | head -n 1 | xargs curl -sL -o luau.zip
+          url=$(curl -sL https://api.github.com/repos/luau-lang/luau/releases/latest \
+            | grep -oP '"browser_download_url":\s*"\K[^"]*luau-ubuntu\.zip' | head -n 1)
+          echo "luau url: $url"
+          curl -sL -o luau.zip "$url"
           unzip -o luau.zip -d luau
           chmod +x luau/luau luau/luau-compile
           echo "$PWD/luau" >> "$GITHUB_PATH"
